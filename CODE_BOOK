@@ -1,0 +1,38 @@
+This codebook describes the steps for the data thas was obtained, creating a tidy data set,
+based on the DataSet obtained from the UCI Machine Learning Platform (also see the ReadMe file in this repository)
+
+The data can be obtained from:
+* https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+
+Referencing:
+* [1] Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. 
+Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly 
+Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). 
+Vitoria-Gasteiz, Spain. Dec 2012
+
+In the DataSet, there is the 'actual' data (available in .txt files):
+* Test Data: X_test, y_test and subject_test
+* Train Data: X_train, y_train and subject_train
+
+And, the descriptive files to the data (available in .txt files):
+* Features (and, Features_info)
+* Activity_labels 
+* README
+
+The run_analysis.R script tries to achieve the following:
+* Download and unzip the Dataset (lines 13-22 of the coding)
+* The respective test/train data is read (read table, lines 33-57 of the coding)
+  The indices corresponding to mean values and standard deviation are obtained for subsetting by 
+  selecting variables which contain mean or std (i.e. "mean|std). (line 37 of the coding)
+* Combining the two subsets into one set (lines 65-68 of the coding)
+* Merge the test and train data into one finalized tidy .txt file. (line 71-73 of the coding)
+
+The naming in the final tidy .txt file is similar to the naming convention of the source data.
+* The first two columns are obtained from the Activity_labels .txt file.
+  i.e. the first column is related to the Subject (e.g., 1, 2, 3) related to the actual
+  Activity (e.g., walking, walking_upstairs, walking_downstairs)
+  
+* The other columns correspond to values describing mean / standard deviations obtained
+  from the Test / Train dataset. The naming of these variables is the same as in the Features text file.
+  e.g.: BodyGyro-mean()-Y, tBodyGyroJerk-std()-Z
+  
